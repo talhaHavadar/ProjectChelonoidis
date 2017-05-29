@@ -1,0 +1,17 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "raspberrypi.local",
+  "port": "22",
+  "target": "/home/pi/ProjectChelonoidisSelfDrivingCar",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**",
+    ".git"
+  ],
+  "username": "pi",
+  "password": "bbx511f9ym",
+  "watch": [],
+  "transport": "scp"
+}
