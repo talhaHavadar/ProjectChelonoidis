@@ -3,7 +3,10 @@ from datetime import datetime
 COMMAND_TYPE_JOYSTICK = 0
 COMMAND_TYPE_MOVEMENT_CONTROL = 0
 COMMAND_TYPE_ULTRASONIC_SENSOR = 1
+<<<<<<< HEAD
 COMMAND_TYPE_AUTOPILOT = 2
+=======
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 
 def parseCommandString(command_string):
     start_index = command_string.find("#CMD#")
@@ -18,9 +21,12 @@ def parseCommandString(command_string):
         command_type = COMMAND_TYPE_JOYSTICK
     elif command_type == "US":
         command_type = COMMAND_TYPE_ULTRASONIC_SENSOR
+<<<<<<< HEAD
     elif command_type == "AP":
         command_type = COMMAND_TYPE_AUTOPILOT
 
+=======
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
     return (command_type, arguments, datetime.fromtimestamp(float(action_time)/1000.0) if action_time is not None else None)
 
 class Command(object):
@@ -34,10 +40,16 @@ class Command(object):
 
 class CommandsHandler():
 
+<<<<<<< HEAD
     def __init__(self, pool_size = 20):
         self.movement_commands = list()
         self.sensor_commands = list()
         self.autopilot_commands = list()
+=======
+    def __init__(self, pool_size = 10):
+        self.movement_commands = list()
+        self.sensor_commands = list()
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
         self.pool_size = pool_size
 
     def addCommand(self, command):
@@ -45,14 +57,18 @@ class CommandsHandler():
             self.__addMovementCommand(command)
         elif command.type == COMMAND_TYPE_ULTRASONIC_SENSOR:
             self.__addSensorCommand(command)
+<<<<<<< HEAD
         elif command.type == COMMAND_TYPE_AUTOPILOT:
             self.__addAutopilotCommand(command)
+=======
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 
     def lastCommand(self, command_type):
         if command_type == COMMAND_TYPE_JOYSTICK:
             return self.movement_commands[-1] if len(self.movement_commands) > 0 else None
         elif command_type == COMMAND_TYPE_ULTRASONIC_SENSOR:
             return self.sensor_commands[-1] if len(self.sensor_commands) > 0 else None
+<<<<<<< HEAD
         elif command_type == COMMAND_TYPE_AUTOPILOT:
             if len(self.autopilot_commands) == 0:
                 return None
@@ -75,6 +91,9 @@ class CommandsHandler():
                         max_command[0] = command
             # print("cmd_dict", cmd_dict)
             return max_command[0]
+=======
+
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
     def __addMovementCommand(self, command):
         if len(self.movement_commands) == 0:
             self.movement_commands.append(command)
@@ -83,6 +102,7 @@ class CommandsHandler():
                 if len(self.movement_commands) >= self.pool_size:
                     del self.movement_commands[0]
                 self.movement_commands.append(command)
+<<<<<<< HEAD
     def __addAutopilotCommand(self, command):
         if len(self.autopilot_commands) == 0:
             self.autopilot_commands.append(command)
@@ -91,6 +111,8 @@ class CommandsHandler():
                 if len(self.autopilot_commands) >= self.pool_size:
                     del self.autopilot_commands[0]
                 self.autopilot_commands.append(command)
+=======
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 
     def __addSensorCommand(self, command):
         if len(self.sensor_commands) == 0:

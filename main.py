@@ -1,5 +1,6 @@
 from steering import SteeringMotor
 from sensorkit.MotorControl_L298N import MotorControl_L298N
+<<<<<<< HEAD
 import socketserver
 import time
 import socket
@@ -9,11 +10,20 @@ import threading
 
 #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #s.bind(("", 4444))
+=======
+import time
+import socket
+import commands
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.bind(("", 4444))
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 
 
 
 
 
+<<<<<<< HEAD
 #steering_motor = SteeringMotor(input_pin0=17, input_pin1=27, enable_pin=22)
 
 #motor = MotorControl_L298N(input_pin0=10, input_pin1=9, enable_pin=11, pwm_frequency = 20)
@@ -33,6 +43,14 @@ inp = input()
 server.shutdown()
 server.server_close()
 """
+=======
+steering_motor = SteeringMotor(input_pin0=17, input_pin1=27, enable_pin=22)
+
+motor = MotorControl_L298N(input_pin0=10, input_pin1=9, enable_pin=11, pwm_frequency = 20)
+
+cmd_handler = commands.CommandsHandler(pool_size = 10)
+
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 # motor.forward(100)
 
 def translate(value, leftMin, leftMax, rightMin, rightMax):
@@ -98,4 +116,7 @@ try:
 except Exception:
     steering_motor.cleanup()
     motor.cleanup()
+<<<<<<< HEAD
 """
+=======
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367

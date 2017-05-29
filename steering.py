@@ -1,9 +1,12 @@
 from sensorkit.MotorControl_L298N import MotorControl_L298N
 import time
 
+<<<<<<< HEAD
 RIGHT = 1
 FORWARD = 0
 LEFT = -1
+=======
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 
 class SteeringMotor(MotorControl_L298N):
 
@@ -12,6 +15,7 @@ class SteeringMotor(MotorControl_L298N):
         self.hydraulic = hydraulic
         self.current_state = 0
         self.center_angle = 50
+<<<<<<< HEAD
         self.blockage = 0
         self.current_dir = 0
 
@@ -45,6 +49,14 @@ class SteeringMotor(MotorControl_L298N):
 
     def set_blockage(self, direction):
         self.blockage = direction
+=======
+
+    def right(self):
+        self.forward(speed=50)
+
+    def left(self):
+        self.backward(speed=50)
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
 
     def angle(self, value):
         value = 100 if value > 100 else 0 if value < 0 else value
@@ -53,12 +65,20 @@ class SteeringMotor(MotorControl_L298N):
             diff = self.__getAngleStatePoint(value) - self.current_state
             while diff != 0:
                 if diff > 0: # we need to turn right
+<<<<<<< HEAD
                     self.forward(speed = 40)
+=======
+                    self.forward(speed = 80)
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
                     time.sleep(.3)
                     self.stop()
                     diff -= 1
                 elif diff < 0:
+<<<<<<< HEAD
                     self.backward(speed = 40)
+=======
+                    self.backward(speed = 80)
+>>>>>>> 853bfb8c9094baee2b673d2613ffe77a82c1e367
                     time.sleep(.3)
                     self.stop()
                     diff += 1
